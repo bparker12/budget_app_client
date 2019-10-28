@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react'
 
 
 const HomePage = props => {
-    const [project, setProject] = useState([])
+    const [projects, setProject] = useState([])
 
 
     const getProjects = () => {
@@ -26,11 +26,14 @@ const HomePage = props => {
 
     return (
     <>
+        {projects.map(project =>
         <Card key={project.id}>
             <Card.Content>
                 <Card.Header>Project {project.name}</Card.Header>
             </Card.Content>
         </Card>
+        )
+        }
     </>
     )
 }

@@ -6,6 +6,11 @@ import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
 const NavBar = props => {
     const { isAuthenticated, logout } = useSimpleAuth()
 
+    const logoutAction = () => {
+        logout()
+        props.history.push("/login")
+    }
+
     return (
         <nav>
             <Menu>
@@ -17,6 +22,9 @@ const NavBar = props => {
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/register"> Register </Link>
+                </Menu.Item>
+                <Menu.Item position="right" onClick={logoutAction}>
+                    Logout
                 </Menu.Item>
             </Menu>
         </nav>
