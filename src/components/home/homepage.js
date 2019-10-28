@@ -12,7 +12,7 @@ const HomePage = props => {
             "headers": {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization": `Token ${localStorage.getItem("bangazon_token")}`
+                "Authorization": `Token ${localStorage.getItem("budgetapp_token")}`
             }
         })
         .then(res => res.json())
