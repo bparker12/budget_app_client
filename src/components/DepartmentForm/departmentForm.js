@@ -51,7 +51,7 @@ const DepartmentForm = props => {
                 <Label size="big" prompt basic>Rate per Hour</Label>
                 <input required placeholder="$/hour" type="number" step=".01" ref={rate}>
                 </input>
-                <Button type="Submit">Add Department</Button>
+                <Button color="blue" type="Submit">Add Department</Button>
         </Form>
 
         <Header as="h2">Current Departments Added</Header>
@@ -66,7 +66,7 @@ const DepartmentForm = props => {
                     </Card.Content>
                 </Card>
             )}
-        <button onClick={() => submitAllDepts(department)}>Submit All</button>
+        <Button color="blue" onClick={() => submitAllDepts(department)}>Submit All</Button>
         </>
     )
 }
