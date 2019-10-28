@@ -1,4 +1,5 @@
 import React, { useRef } from "react"
+import { Link } from "react-router-dom"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 
 
@@ -52,6 +53,7 @@ const Login = props => {
                         Sign in
                     </button>
                 </fieldset>
+                <p>Not Registered? <Link to="/register"> Register Here</Link></p>
             </form>
         </main>
     )
