@@ -1,8 +1,9 @@
 import { Route } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import { withRouter } from "react-router-dom"
-import register from './components/auth/register'
-import login from './components/auth/login'
+import HomePage from './components/home/homepage'
+import Register from './components/auth/register'
+import Login from './components/auth/login'
 
 
 const ApplicationViews = () => {
@@ -11,18 +12,17 @@ const ApplicationViews = () => {
         <React.Fragment>
             <Route
                 exact path="/" render={props => {
-                    return <homePage {...props} />
+                    return <HomePage {...props} />
                 }}
             />
             <Route
                 path="/register" render={props => {
-                    return <register {...props} />
+                    return <Register {...props} />
                 }}
             />
-
             <Route
                 path="/login" render={props => {
-                    return <login {...props} />
+                    return <Login {...props} />
                 }}
             />
         </React.Fragment>

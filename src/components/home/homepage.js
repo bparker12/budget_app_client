@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { Card } from 'semantic-ui-react'
 
 
-const homePage = props => {
-    const [project, setProject] = useState9([])
+const HomePage = props => {
+    const [project, setProject] = useState([])
 
 
     const getProjects = () => {
@@ -11,6 +11,7 @@ const homePage = props => {
             "method": "GET",
             "headers": {
                 "Accept": "application/json",
+                "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("bangazon_token")}`
             }
         })
@@ -19,8 +20,8 @@ const homePage = props => {
     }
 
     useEffect(() => {
-        getProjects(), []
-    })
+        getProjects()}, []
+    )
 
 
     return (
@@ -33,3 +34,4 @@ const homePage = props => {
     </>
     )
 }
+export default HomePage

@@ -4,13 +4,11 @@ import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
 
 
 const Register = props => {
-    const email = useRef()
     const userName = useRef()
     const lastName = useRef()
     const password = useRef()
     const firstName = useRef()
-    const address = useRef()
-    const phoneNumber = useRef()
+    const company = useRef()
     const verifyPassword = useRef()
     const { register } = useSimpleAuth()
 
@@ -21,9 +19,7 @@ const Register = props => {
             "username": userName.current.value,
             "first_name": firstName.current.value,
             "last_name": lastName.current.value,
-            "address": address.current.value,
-            "phone_number": phoneNumber.current.value,
-            "email": email.current.value,
+            "company": company.current.value,
             "password": password.current.value
         }
 
@@ -63,25 +59,11 @@ const Register = props => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input ref={email} type="email"
-                        name="email"
+                    <label htmlFor="inputEmail"> Company Name </label>
+                    <input ref={company} type="text"
+                        name="company"
                         className="form-control"
-                        placeholder="Email address"
-                        required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputAddress"> Address </label>
-                    <input ref={address} type="text"
-                        name="address"
-                        className="form-control"
-                        required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputPhoneNumber"> Phone Number </label>
-                    <input ref={phoneNumber} type="number"
-                        name="phoneNumber"
-                        className="form-control"
+                        placeholder="Company Name"
                         required />
                 </fieldset>
                 <fieldset>
