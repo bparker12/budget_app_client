@@ -23,7 +23,7 @@ const DepartmentForm = props => {
     }
 
     const submitAllDepts = (newDept) => {
-        if(department === []){
+        if(department !== []){
             return fetch("http://localhost:8000/departments", {
                 method: "POST",
                 headers: {
