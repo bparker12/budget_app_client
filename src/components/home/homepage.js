@@ -42,6 +42,7 @@ const HomePage = props => {
     <>
         {projectdepts.map(projectdept =>
         <Card key={projectdept.id}>
+        {console.log(projectdept)}
             <ProjectDeptCard projectDept={projectdept} delete={deleteProjectDept} open={open} setConfirm={setConfirm} />
         </Card>
         )}
