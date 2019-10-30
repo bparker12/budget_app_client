@@ -9,6 +9,7 @@ const DepartmentForm = props => {
     const quantity = useRef()
 
     const [department, setDepartment] = useState([])
+    
 
     const addDepartment = (e) => {
         e.preventDefault();
