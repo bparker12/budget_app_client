@@ -18,7 +18,13 @@ const NavBar = props => {
                     <Link to="/"> Home </Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <Link to="/departmentform"> Add A Department </Link>
+                    <Link to="/departmentform"> Add a Department </Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/departments"> Departments </Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/projectform"> Add a Project </Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/login"> Login </Link>
