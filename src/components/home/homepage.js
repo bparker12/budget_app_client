@@ -1,13 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from 'semantic-ui-react'
+import ProjectDeptCard from '../project/projectDeptCard'
 
 
 const HomePage = props => {
-    const [projects, setProject] = useState([])
+    const [projectdepts, setProjectDept] = useState([])
+    const [open, setConfirm] = useState(false)
 
-
-    const getProjects = () => {
-        fetch("http://localhost:8000/projectbudgets", {
+    const getProjectDepts = () => {
+        fetch("http://localhost:8000/projectdepartments", {
             "method": "GET",
             "headers": {
                 "Accept": "application/json",
@@ -16,24 +17,34 @@ const HomePage = props => {
             }
         })
         .then(res => res.json())
-        .then(setProject)
+        .then(setProjectDept)
+    }
+
+    const deleteProjectDept = (id) => {
+        fetch(`http://localhost:8000/projectdepartments/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("budgetapp_token")}`
+            }
+        })
+        .then(() => {
+            getProjectDepts()
+            setConfirm(!open)
+        })
     }
 
     useEffect(() => {
-        getProjects()}, []
+        getProjectDepts()}, []
     )
 
 
     return (
     <>
-        {projects.map(project =>
-        <Card key={project.id}>
-            <Card.Content>
-                <Card.Header>Project {project.name}</Card.Header>
-            </Card.Content>
+        {projectdepts.map(projectdept =>
+        <Card key={projectdept.id}>
+            <ProjectDeptCard projectDept={projectdept} delete={deleteProjectDept} open={open} setConfirm={setConfirm} />
         </Card>
-        )
-        }
+        )}
     </>
     )
 }

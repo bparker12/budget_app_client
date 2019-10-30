@@ -69,7 +69,7 @@ const ProjectBudgetForm = props => {
                         <input  type="checkbox" value={dept.id}  onClick={() => setProjDept([...project_dept, dept])} />{dept.name}
                     </div>
                     )}
-                <Button color="blue" type="Submit">Add Department</Button>
+                <Button color="blue" type="Submit">Add Project</Button>
                 </Form>
 
 
