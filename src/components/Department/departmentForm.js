@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Form, Button, Header, Label } from 'semantic-ui-react'
+import { Form, Button, Header, Label, Card } from 'semantic-ui-react'
 import DepartmentCard from './departmentCard'
 
 
@@ -61,7 +61,9 @@ const DepartmentForm = props => {
 
         <Header as="h2">Current Departments Added</Header>
             {department.map(dept =>
+                <Card>
                 <DepartmentCard dept={dept} />
+                </Card>
             )}
         <Button color="blue" onClick={() => submitAllDepts(department)}>Submit All</Button>
         </>
