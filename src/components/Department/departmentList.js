@@ -1,11 +1,13 @@
 import React, { useEffect, useState }  from "react"
-import { Header, Card, Button, Confirm } from 'semantic-ui-react'
+import { Header, Card, Button, Confirm, Modal } from 'semantic-ui-react'
 import DepartmentCard from "./departmentCard"
+import DepartmentEdit from './departmentEdit'
 
 
 const DepartmentList = props => {
     const [deptartments, setDept] = useState([])
     const [open, setConfirm] = useState(false)
+    const [modalOpen, setModal] = useState(false)
 
     const getDepartments = () => {
         fetch(`http://localhost:8000/departments`, {
@@ -41,15 +43,24 @@ const DepartmentList = props => {
         <>
         <Header as="h1"> Departments </Header>
             {deptartments.map(dept =>
-            <Card>
-            <DepartmentCard key={dept.id} dept={dept} />
+            <Card key={dept.id}>
+            <DepartmentCard  dept={dept} />
             <Button.Group widths='3'>
                     <div>
                     <Button onClick={() => setConfirm(!open)} color="red">Delete</Button>
                     <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(dept.id)} />
                     </div>
                     <div>
-                    <Button onClick={() => console.log("edit")} color="yellow">Edit</Button>
+                    <Modal
+                        size="large"
+                        open={modalOpen}
+                        id={dept.id}
+                        onCancel={() => setModal(!modalOpen)}
+                        trigger={<Button onClick={() => setModal(!modalOpen)} color="olive">Edit</Button>}>
+                        <Modal.Content>
+                            <DepartmentEdit dept={dept} setModal={setModal} modalOpen={modalOpen} getDept={getDepartments}/>
+                        </Modal.Content>
+                    </Modal>
                     </div>
                 </Button.Group>
             </Card>
