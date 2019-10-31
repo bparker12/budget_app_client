@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Button, Confirm } from 'semantic-ui-react'
 
 
@@ -9,6 +9,7 @@ const ProjectDeptCard = props => {
             <Card.Header as="h2" textAlign="center">Project
             <br></br>
             {props.projectDept.project_budget.name}</Card.Header>
+            <Card.Description textAlign="center"> Project Length: {props.projectDept.project_budget.length} </Card.Description>
                 <Card.Content>
                         <div>
                         <Card.Content >
@@ -20,6 +21,7 @@ const ProjectDeptCard = props => {
                 <Card.Content>
                     <Button onClick={() => props.setConfirm(!props.open)}>Delete</Button>
                     <Confirm open={props.open} onCancel={() => props.setConfirm(!props.open)} onConfirm={() => props.delete(props.projectDept.id)}></Confirm>
+                    <Button onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>
                 </Card.Content>
         </>
     )

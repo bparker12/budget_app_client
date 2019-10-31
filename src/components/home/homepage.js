@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Card } from 'semantic-ui-react'
+import { Card, Modal } from 'semantic-ui-react'
 import ProjectDeptCard from '../project/projectDeptCard'
+import ProjectBudgetEdit from '../project/projectBudgetEdit'
+
 
 
 const HomePage = props => {
     const [projectdepts, setProjectDept] = useState([])
     const [open, setConfirm] = useState(false)
+    const [modalOpen, setModal] = useState(false)
+    const [projId, setProj] = useState({})
+
+    const editModal = (proj) => {
+        console.log("click")
+        console.log(proj)
+        setProj(proj)
+        setModal(!modalOpen)
+        console.log(open)
+    }
 
     const getProjectDepts = () => {
         fetch("http://localhost:8000/projectdepartments", {
@@ -41,11 +53,31 @@ const HomePage = props => {
     return (
     <>
         {projectdepts.map(projectdept =>
-        <Card key={projectdept.id}>
-        {console.log(projectdept)}
-            <ProjectDeptCard projectDept={projectdept} delete={deleteProjectDept} open={open} setConfirm={setConfirm} />
+        <Card key={projectdept.project_budget.id}>
+            <ProjectDeptCard
+                projectDept={projectdept}
+                delete={deleteProjectDept}
+                open={open}
+                setConfirm={setConfirm}
+                editModal={editModal}
+                getProjectDepts={getProjectDepts}
+                />
         </Card>
         )}
+        <Modal
+            size="small"
+            open={modalOpen}
+            onCancel={() => setModal(!open)}
+            >
+            <Modal.Content>
+                <ProjectBudgetEdit
+                projBudg={projId}
+                setModal={setModal}
+                modalOpen={modalOpen}
+                getProjectDepts={getProjectDepts}
+                />
+            </Modal.Content>
+        </Modal>
     </>
     )
 }
