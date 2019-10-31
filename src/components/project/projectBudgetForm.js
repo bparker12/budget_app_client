@@ -31,7 +31,6 @@ const ProjectBudgetForm = props => {
             length: parseInt(length.current.value),
             dept: Object.values(project_dept)
         }
-        console.log(Object.values(project_dept))
         submitProject(new_proj)
     }
 

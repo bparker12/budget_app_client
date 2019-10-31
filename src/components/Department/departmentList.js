@@ -8,6 +8,7 @@ const DepartmentList = props => {
     const [deptartments, setDept] = useState([])
     const [open, setConfirm] = useState(false)
     const [modalOpen, setModal] = useState(false)
+    const [currentId, setId] = useState()
 
     const getDepartments = () => {
         fetch(`http://localhost:8000/departments`, {
@@ -39,32 +40,38 @@ const DepartmentList = props => {
         getDepartments()}, []
     )
 
+    const editModal = (object) => {
+        setId(object)
+        setModal(!open)
+    }
+
     return (
         <>
         <Header as="h1"> Departments </Header>
             {deptartments.map(dept =>
             <Card key={dept.id}>
-            <DepartmentCard  dept={dept} />
+                <DepartmentCard  dept={dept} />
             <Button.Group widths='3'>
                     <div>
                     <Button onClick={() => setConfirm(!open)} color="red">Delete</Button>
                     <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(dept.id)} />
                     </div>
                     <div>
-                    <Modal
-                        size="large"
-                        open={modalOpen}
-                        id={dept.id}
-                        onCancel={() => setModal(!modalOpen)}
-                        trigger={<Button onClick={() => setModal(!modalOpen)} color="olive">Edit</Button>}>
-                        <Modal.Content>
-                            <DepartmentEdit dept={dept} setModal={setModal} modalOpen={modalOpen} getDept={getDepartments}/>
-                        </Modal.Content>
-                    </Modal>
+
+                    <Button onClick={() => editModal(dept)} color="olive">Edit</Button>
                     </div>
                 </Button.Group>
             </Card>
             )}
+        <Modal
+            size="small"
+            open={modalOpen}
+            onCancel={() => setModal(!modalOpen)}
+            >
+            <Modal.Content>
+                <DepartmentEdit dept={currentId} setModal={setModal} modalOpen={modalOpen} getDept={getDepartments}/>
+            </Modal.Content>
+        </Modal>
         </>
     )
 }
