@@ -5,6 +5,7 @@ import { Form, Button, Header, Label } from 'semantic-ui-react'
 const ProjectBudgetForm = props => {
     const name = useRef()
     const length = useRef()
+    const quantity = useRef()
 
     const [department, setDept] = useState([])
     const [project_dept, setProjDept] = useState([])
@@ -49,9 +50,6 @@ const ProjectBudgetForm = props => {
             })
         }
 
-
-
-
     return (
         <>
             <Header as="h1">Add A Project</Header>
@@ -60,12 +58,13 @@ const ProjectBudgetForm = props => {
                         <input id="name" required defaultValue="" placeholder="Project Name" ref={name}>
                         </input>
                     <Label size="big" prompt basic>Project Length</Label>
-                        <input id="length" required defaultValue="" placeholder="Project Length (in months)" type='number' ref={length}>
-                        </input>
+                        <input id="length" required defaultValue="" placeholder="Project Length (in months)" type='number' ref={length}
+                        />
             <Header as="h2">Choose Departments to Add to the Project</Header>
                     {department.map((dept, i) =>
                     <div key={dept.id}>
-                        <input  type="checkbox" value={dept.id}  onClick={() => setProjDept([...project_dept, dept])} />{dept.name}
+                            <input  type="checkbox" value={dept.id}  onClick={() => setProjDept([...project_dept, dept])} />{dept.name}
+                            <input required type="number" placeholder="# of Employees for Project" ref={quantity} />
                     </div>
                     )}
                 <Button color="blue" type="Submit">Add Project</Button>
