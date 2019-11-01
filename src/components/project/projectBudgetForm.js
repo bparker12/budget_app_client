@@ -5,11 +5,11 @@ import { Form, Button, Header, Label } from 'semantic-ui-react'
 const ProjectBudgetForm = props => {
     const name = useRef()
     const length = useRef()
-    const quantity = useRef()
+    // const quantity = useRef()
 
     const [department, setDept] = useState([])
     const [project_dept, setProjDept] = useState([])
-    const [id, setId] = useState([])
+    // const [id, setId] = useState([])
 
     const getDepartments = () => {
         fetch(`http://localhost:8000/departments`, {
@@ -32,7 +32,7 @@ const ProjectBudgetForm = props => {
             name: name.current.value,
             length: parseInt(length.current.value),
             dept: Object.values(project_dept),
-            quantity: parseInt(quantity.current.value)
+            // quantity: parseInt(quantity.current.value)
         }
         submitProject(new_proj)
     }
@@ -55,11 +55,11 @@ const ProjectBudgetForm = props => {
     const toggleCheckbox = (dept) => {
         if(document.getElementById(dept.id).checked === true){
                 setProjDept([...project_dept, dept])
-                setId([...id, dept.id])
+                // setId([...id, dept.id])
 
             } else if(document.getElementById(dept.id).checked === false){
                 setProjDept(project_dept.filter(dep => dep !== dept))
-                setId(id.filter(Id => Id !== dept.id))
+                // setId(id.filter(Id => Id !== dept.id))
             }
 
     }
@@ -84,10 +84,7 @@ const ProjectBudgetForm = props => {
                             id={dept.id}
                             type="checkbox"
                             value={dept.id}
-                            onClick={() => toggleCheckbox(dept)} />{dept.name}
-                        {id.filter(ID => ID === dept.id) && project_dept.length !== 0 ?
-                            <input  type="number" placeholder="# of Employees for Project" ref={quantity} />
-                        : "" }
+                            onClick={() => toggleCheckbox(dept)}/>{dept.name} - {dept.quantity} available
                         </div>
                     </div>
                     )}
@@ -100,3 +97,9 @@ const ProjectBudgetForm = props => {
 }
 
 export default ProjectBudgetForm
+
+
+// {id.filter(ID => ID === dept.id) && project_dept.length !== 0 ?
+//     <input  type="number" placeholder="# of Employees for Project" ref={quantity} />
+// : "" }
+// </div>

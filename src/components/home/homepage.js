@@ -53,7 +53,7 @@ const HomePage = props => {
     return (
     <>
         {projectdepts.map(projectdept =>
-        <Card key={projectdept.project_budget.id}>
+        <Card key={projectdept.id}>
             <ProjectDeptCard
                 projectDept={projectdept}
                 delete={deleteProjectDept}
