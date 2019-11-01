@@ -57,7 +57,6 @@ const DepartmentList = props => {
                     <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(dept.id)} />
                     </div>
                     <div>
-
                     <Button onClick={() => editModal(dept)} color="olive">Edit</Button>
                     </div>
                 </Button.Group>

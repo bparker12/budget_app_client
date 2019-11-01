@@ -9,6 +9,7 @@ const ProjectBudgetForm = props => {
 
     const [department, setDept] = useState([])
     const [project_dept, setProjDept] = useState([])
+    const [id, setId] = useState([])
 
     const getDepartments = () => {
         fetch(`http://localhost:8000/departments`, {
@@ -30,7 +31,8 @@ const ProjectBudgetForm = props => {
         const new_proj = {
             name: name.current.value,
             length: parseInt(length.current.value),
-            dept: Object.values(project_dept)
+            dept: Object.values(project_dept),
+            quantity: parseInt(quantity.current.value)
         }
         submitProject(new_proj)
     }
@@ -50,6 +52,20 @@ const ProjectBudgetForm = props => {
             })
         }
 
+    const toggleCheckbox = (dept) => {
+        if(document.getElementById(dept.id).checked === true){
+                setProjDept([...project_dept, dept])
+                setId([...id, dept.id])
+
+            } else if(document.getElementById(dept.id).checked === false){
+                setProjDept(project_dept.filter(dep => dep !== dept))
+                setId(id.filter(Id => Id !== dept.id))
+            }
+
+    }
+
+
+
     return (
         <>
             <Header as="h1">Add A Project</Header>
@@ -61,10 +77,18 @@ const ProjectBudgetForm = props => {
                         <input id="length" required defaultValue="" placeholder="Project Length (in months)" type='number' ref={length}
                         />
             <Header as="h2">Choose Departments to Add to the Project</Header>
-                    {department.map((dept, i) =>
+                    {department.map((dept) =>
                     <div key={dept.id}>
-                            <input  type="checkbox" value={dept.id}  onClick={() => setProjDept([...project_dept, dept])} />{dept.name}
-                            <input required type="number" placeholder="# of Employees for Project" ref={quantity} />
+                        <div>
+                            <input
+                            id={dept.id}
+                            type="checkbox"
+                            value={dept.id}
+                            onClick={() => toggleCheckbox(dept)} />{dept.name}
+                        {id.filter(ID => ID === dept.id) && project_dept.length !== 0 ?
+                            <input  type="number" placeholder="# of Employees for Project" ref={quantity} />
+                        : "" }
+                        </div>
                     </div>
                     )}
                 <Button color="blue" type="Submit">Add Project</Button>
