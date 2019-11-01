@@ -27,6 +27,9 @@ const NavBar = props => {
                     <Link to="/projectform"> Add a Project </Link>
                 </Menu.Item>
                 <Menu.Item>
+                    <Link to="/status"> Status a Project </Link>
+                </Menu.Item>
+                <Menu.Item>
                     <Link to="/login"> Login </Link>
                 </Menu.Item>
                 <Menu.Item>
