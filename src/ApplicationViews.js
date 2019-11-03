@@ -7,6 +7,7 @@ import Login from './components/auth/login'
 import DepartmentForm from './components/department/departmentForm'
 import DepartmentList from './components/department/departmentList'
 import ProjectBudgetForm from './components/project/projectBudgetForm'
+import DepartmentHour from './components/status/dpartmentHour'
 
 
 const ApplicationViews = () => {
@@ -43,11 +44,11 @@ const ApplicationViews = () => {
                     return <ProjectBudgetForm {...props} />
                 }}
             />
-            {/* <Route
+            <Route
                 path="/status" render={props => {
                     return <DepartmentHour {...props} />
                 }}
-            /> */}
+            />
         </React.Fragment>
     )
 }

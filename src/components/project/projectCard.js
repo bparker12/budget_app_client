@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 const ProjectCard = props => {
 
@@ -8,14 +9,8 @@ const ProjectCard = props => {
             <br></br>
             {props.project_budget.name}</Card.Header>
             <Card.Description textAlign="center"> Project Length: {props.project_budget.length} </Card.Description>
-                <Card.Content>
-                        <div>
-                        <Card.Content >
-                            <Card.Header as='h3'>Departments</Card.Header>
-                            <Card.Description> {props.department.name} </Card.Description>
-                        </Card.Content>
-                        </div>
-                </Card.Content>
+                {/* <Card.Content>
+                </Card.Content> */}
                 {/* <Card.Content>
                 </Card.Content> */}
         </>
