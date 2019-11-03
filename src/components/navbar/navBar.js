@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
+import { mixedTypeAnnotation } from "@babel/types"
 
 const NavBar = props => {
     const { isAuthenticated, logout } = useSimpleAuth()
@@ -14,27 +15,47 @@ const NavBar = props => {
     return (
         <nav>
             <Menu>
+                {isAuthenticated() ?
                 <Menu.Item>
                     <Link to="/"> Home </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() ?
                 <Menu.Item>
                     <Link to="/departmentform"> Add a Department </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() ?
                 <Menu.Item>
                     <Link to="/departments"> Departments </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+
+                {isAuthenticated() ?
                 <Menu.Item>
                     <Link to="/projectform"> Add a Project </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() ?
+                <Menu.Item>
+                    <Link to="/status"> Status a Project </Link>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() === false ?
                 <Menu.Item>
                     <Link to="/login"> Login </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() === false ?
                 <Menu.Item>
                     <Link to="/register"> Register </Link>
-                </Menu.Item>
+                </Menu.Item> : null
+                }
+                {isAuthenticated() ?
                 <Menu.Item position="right" onClick={logoutAction}>
                     Logout
-                </Menu.Item>
+                </Menu.Item> : null
+                }
             </Menu>
         </nav>
     )

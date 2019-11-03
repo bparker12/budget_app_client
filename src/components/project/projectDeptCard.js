@@ -19,6 +19,13 @@ const ProjectDeptCard = props => {
                         </div>
                 </Card.Content>
                 <Card.Content>
+                    <div>
+                        <Card.Description> Esimated Weekly Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.weekly_cost)}</Card.Description>
+                        <Card.Description> Esimated Monthly Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.monthly_cost)}</Card.Description>
+                        <Card.Description> Esimated Contract Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.total_cost)}</Card.Description>
+                    </div>
+                </Card.Content>
+                <Card.Content>
                     <Button onClick={() => props.setConfirm(!props.open)}>Delete</Button>
                     <Confirm open={props.open} onCancel={() => props.setConfirm(!props.open)} onConfirm={() => props.delete(props.projectDept.id)}></Confirm>
                     <Button onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>
