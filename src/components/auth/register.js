@@ -22,12 +22,13 @@ const Register = props => {
             "company": company.current.value,
             "password": password.current.value
         }
-
+        password === verifyPassword ?
         register(newUser).then(() => {
             props.history.push({
                 pathname: "/"
             })
         })
+        : alert("Password did not match")
     }
 
     return (

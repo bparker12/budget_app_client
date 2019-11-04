@@ -9,7 +9,7 @@ import DepartmentList from './components/department/departmentList'
 import ProjectBudgetForm from './components/project/projectBudgetForm'
 import DepartmentHour from './components/status/dpartmentHour'
 import StatusDetails from "./components/status/statusDetails"
-
+import StatusProjectDept from './components/status/statusProjectDept'
 
 const ApplicationViews = () => {
 
@@ -52,6 +52,10 @@ const ApplicationViews = () => {
             />
             <Route exact path="/projectbudgets/:projectbudgetId(\d+)" render={(props) => {
                 return <StatusDetails {...props} />
+            }}
+            />
+            <Route exact path="/departmentstatus/:projectdepartmentId(\d+)" render={(props) => {
+                return <StatusProjectDept {...props} />
             }}
             />
         </React.Fragment>
