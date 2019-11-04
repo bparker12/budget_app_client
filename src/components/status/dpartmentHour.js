@@ -35,7 +35,7 @@ useEffect(() => {
                  <div key={project.id}>
                  <Card>
                  <ProjectCard project_budget={project} />
-                 <Button primary color="green" onClick={() => console.log("works")}>Status</Button>
+                 <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
                  </Card>
                 </div>
             )}
