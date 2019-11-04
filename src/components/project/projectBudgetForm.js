@@ -73,7 +73,7 @@ const ProjectBudgetForm = props => {
                     <Label size="big" prompt basic>Project Name</Label>
                         <input id="name" required defaultValue="" placeholder="Project Name" ref={name}>
                         </input>
-                    <Label size="big" prompt basic>Project Length</Label>
+                    <Label size="big" prompt basic>Project Length (months)</Label>
                         <input id="length" required defaultValue="" placeholder="Project Length (in months)" type='number' ref={length}
                         />
             <Header as="h2">Choose Departments to Add to the Project</Header>
