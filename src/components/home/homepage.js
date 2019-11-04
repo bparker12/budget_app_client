@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Modal } from 'semantic-ui-react'
+import { Card, Modal, Confirm } from 'semantic-ui-react'
 import ProjectDeptCard from '../project/projectDeptCard'
 import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
@@ -10,13 +10,16 @@ const HomePage = props => {
     const [open, setConfirm] = useState(false)
     const [modalOpen, setModal] = useState(false)
     const [projId, setProj] = useState({})
+    const [id, setId] = useState()
 
     const editModal = (proj) => {
-        console.log("click")
-        console.log(proj)
         setProj(proj)
         setModal(!modalOpen)
-        console.log(open)
+    }
+
+    const deleteConfirm = (id) => {
+        setId(id)
+        setConfirm(!open)
     }
 
     const getProjectDepts = () => {
@@ -56,14 +59,15 @@ const HomePage = props => {
         <Card key={projectdept.id}>
             <ProjectDeptCard
                 projectDept={projectdept}
-                delete={deleteProjectDept}
                 open={open}
                 setConfirm={setConfirm}
                 editModal={editModal}
                 getProjectDepts={getProjectDepts}
+                deleteConfirm={deleteConfirm}
                 />
         </Card>
         )}
+        <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteProjectDept(id)}></Confirm>
         <Modal
             size="small"
             open={modalOpen}

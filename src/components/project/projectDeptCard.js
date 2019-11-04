@@ -27,9 +27,8 @@ const ProjectDeptCard = props => {
                     </div>
                 </Card.Content>
                 <Card.Content>
-                    <Button onClick={() => props.setConfirm(!props.open)}>Delete</Button>
-                    <Confirm open={props.open} onCancel={() => props.setConfirm(!props.open)} onConfirm={() => props.delete(props.projectDept.id)}></Confirm>
-                    <Button onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>
+                    <Button color="vk" onClick={() => props.deleteConfirm(props.projectDept.id)}>Delete</Button>
+                    <Button color="teal" onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>
                 </Card.Content>
         </>
     )

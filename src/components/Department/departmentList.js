@@ -40,6 +40,11 @@ const DepartmentList = props => {
         getDepartments()}, []
     )
 
+    const handleDelete = (id) => {
+        setId(id)
+        setConfirm(!open)
+    }
+
     const editModal = (object) => {
         setId(object)
         setModal(!open)
@@ -53,15 +58,15 @@ const DepartmentList = props => {
                 <DepartmentCard  dept={dept} />
             <Button.Group widths='3'>
                     <div>
-                    <Button onClick={() => setConfirm(!open)} color="red">Delete</Button>
-                    <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(dept.id)} />
+                    <Button onClick={() => handleDelete(dept.id)} color="vk">Delete</Button>
                     </div>
                     <div>
-                    <Button onClick={() => editModal(dept)} color="olive">Edit</Button>
+                    <Button onClick={() => editModal(dept)} color="teal">Edit</Button>
                     </div>
                 </Button.Group>
             </Card>
             )}
+        <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(currentId)} />
         <Modal
             size="small"
             open={modalOpen}
