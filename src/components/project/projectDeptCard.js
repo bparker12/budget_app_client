@@ -13,8 +13,9 @@ const ProjectDeptCard = props => {
                 <Card.Content>
                         <div>
                         <Card.Content >
-                            <Card.Header as='h3'>Departments</Card.Header>
+                            <Card.Header as='h3'>Department</Card.Header>
                             <Card.Description> {props.projectDept.department.name} </Card.Description>
+                            <Card.Description> # of Employees: {props.projectDept.department.quantity} </Card.Description>
                         </Card.Content>
                         </div>
                 </Card.Content>

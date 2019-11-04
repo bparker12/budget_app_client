@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Header, Card } from 'semantic-ui-react'
+import { Header, Card, Button } from 'semantic-ui-react'
 import ProjectCard from '../project/projectCard'
 
 
@@ -24,6 +24,9 @@ const DepartmentHour = props => {
 useEffect(() => {
     getProjects()}, [])
 
+    const openStatus = (id) => {
+        props.history.push(`/projectbudget/${id}`)
+    }
 
     return (
         <>
@@ -32,6 +35,7 @@ useEffect(() => {
                  <div key={project.id}>
                  <Card>
                  <ProjectCard project_budget={project} />
+                 <Button primary color="green" onClick={() => console.log("works")}>Status</Button>
                  </Card>
                 </div>
             )}
