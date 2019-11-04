@@ -4,7 +4,6 @@ import { Header, Card, Label, Button } from 'semantic-ui-react'
 
 
 const StatusDetails = props => {
-    const total_hours = useRef()
 
     const [projectDetails, setProjectDetail] = useState([])
 
@@ -27,19 +26,11 @@ const StatusDetails = props => {
       <>
           <Header> Status </Header>
           {projectDetails.map(projectDetail =>
-          <div>
-
+          <div key={projectDetail.id}>
           <Card>
             <Card.Header   textAlign='center'> {projectDetail.department.name} </Card.Header>
             <Card.Content>
-            <form>
-              <Card.Description textAlign="center">
-                Project Length:   {projectDetail.project_budget.length}
-              </Card.Description>
-                <Label size="big" prompt basic>Total Hours Worked for Month # </Label>
-                <input type="text" ref={total_hours}></input>
-                <Button>Submit</Button>
-            </form>
+                <Button type="button" fluid onClick={() => props.history.push(`/departmentstatus/${projectDetail.id}`)}>Status Department</Button>
             </Card.Content>
           </Card>
           </div>
