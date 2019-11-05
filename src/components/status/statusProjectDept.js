@@ -76,14 +76,17 @@ const StatusProjectDept = props => {
           <Header> Status </Header>
         {projectDetails.map(projectDetail =>
           <Card key={projectDetail.id}>
-            <Card.Header   textAlign='center'> {projectDetail.department.name} </Card.Header>
+            <Card.Header as='h3'  textAlign='center'> {projectDetail.department.name} </Card.Header>
             <Card.Content>
             <form>
               <Card.Description textAlign="center">
                 Project Length:   {projectDetail.project_budget.length}
               </Card.Description>
-                <Label size="big" prompt basic>Total Hours Worked for Month # </Label>
-                <input type="text" ref={total_hours} defaultValue={handleHoursWorked(projectDetail.department_hour)} min={handleHoursWorked(projectDetail.department_hour)}></input>
+              <Card.Description  textAlign="center">
+                Remaining Months: {projectDetail.project_length_remaining}
+              </Card.Description>
+                <Label size="large" prompt basic>Total Hours Worked for Month # </Label>
+                <input type="number" step={1} ref={total_hours} defaultValue={handleHoursWorked(projectDetail.department_hour)} min={handleHoursWorked(projectDetail.department_hour)}></input>
                 <Button type="button"
                 onClick={(e) => addDeptHour(e, projectDetail.id, projectDetail.project_budget.id, projectDetail.department_hour)}>Submit</Button>
             </form>

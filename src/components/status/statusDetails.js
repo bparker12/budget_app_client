@@ -28,7 +28,12 @@ const StatusDetails = props => {
           {projectDetails.map(projectDetail =>
           <div key={projectDetail.id}>
           <Card>
-            <Card.Header   textAlign='center'> {projectDetail.department.name} </Card.Header>
+            <Card.Header as='h3' textAlign='center'> {projectDetail.department.name} </Card.Header>
+            <Card.Content>
+              <Card.Description>
+                Months Remaining: {projectDetail.project_length_remaining}
+              </Card.Description>
+            </Card.Content>
             <Card.Content>
                 <Button type="button" fluid onClick={() => props.history.push(`/departmentstatus/${projectDetail.id}`)}>Status Department</Button>
             </Card.Content>
