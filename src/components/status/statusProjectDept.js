@@ -27,21 +27,21 @@ const StatusProjectDept = props => {
 
 
     // this function handles the event listener to add a new Department Hour (or status).  It has to bring in the id for the projectDepartment to post the id of the new department hour and also the project_budget to push back to the other departments that might need updating
-    const addDeptHour = (e, id, project_budget_id, dept_hour_id) => {
+    const addDeptHour = (e, id, project_budget_id, dept_hour) => {
       e.preventDefault();
 
-        const dept_hour_configure = (dept_hour_id) => {
-            if(dept_hour_id === null){
+        const dept_hour_configure = (dept_hour_check) => {
+            if(dept_hour_check === null){
                 return null
             } else {
-                return dept_hour_id.id
+                return dept_hour_check.id
             }
         }
 
       const newDeptHour = {
         hours: parseInt(total_hours.current.value),
         projectDepartmentId: id,
-        department_hour_id: dept_hour_configure(dept_hour_id)
+        department_hour_id: dept_hour_configure(dept_hour)
       }
       postDeptHour(newDeptHour, project_budget_id)
     }
@@ -63,7 +63,6 @@ const StatusProjectDept = props => {
 
     const handleHoursWorked = (hours_worked) => {
         if(hours_worked === null){
-            console.log(hours_worked)
             return 0
         } else {
             return hours_worked.hours_worked
