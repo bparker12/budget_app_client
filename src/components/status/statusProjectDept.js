@@ -30,10 +30,18 @@ const StatusProjectDept = props => {
     const addDeptHour = (e, id, project_budget_id, dept_hour_id) => {
       e.preventDefault();
 
+        const dept_hour_configure = (dept_hour_id) => {
+            if(dept_hour_id === null){
+                return null
+            } else {
+                return dept_hour_id.id
+            }
+        }
+
       const newDeptHour = {
         hours: parseInt(total_hours.current.value),
         projectDepartmentId: id,
-        department_hour_id: dept_hour_id
+        department_hour_id: dept_hour_configure(dept_hour_id)
       }
       postDeptHour(newDeptHour, project_budget_id)
     }
@@ -53,6 +61,14 @@ const StatusProjectDept = props => {
     })
 }
 
+    const handleHoursWorked = (hours_worked) => {
+        if(hours_worked === null){
+            console.log(hours_worked)
+            return 0
+        } else {
+            return hours_worked.hours_worked
+        }
+    }
 
     useEffect(getProjectBudget, [])
 
@@ -68,9 +84,9 @@ const StatusProjectDept = props => {
                 Project Length:   {projectDetail.project_budget.length}
               </Card.Description>
                 <Label size="big" prompt basic>Total Hours Worked for Month # </Label>
-                <input type="text" ref={total_hours}></input>
+                <input type="text" ref={total_hours} defaultValue={handleHoursWorked(projectDetail.department_hour)} min={handleHoursWorked(projectDetail.department_hour)}></input>
                 <Button type="button"
-                onClick={(e) => addDeptHour(e, projectDetail.id, projectDetail.project_budget.id, projectDetail.department_hour_id )}>Submit</Button>
+                onClick={(e) => addDeptHour(e, projectDetail.id, projectDetail.project_budget.id, projectDetail.department_hour)}>Submit</Button>
             </form>
             </Card.Content>
           </Card>
