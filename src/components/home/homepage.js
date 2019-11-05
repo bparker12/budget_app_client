@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Header, Card, Button } from 'semantic-ui-react'
+import { Header, Card, Button, Grid } from 'semantic-ui-react'
 import ProjectCard from '../project/projectCard'
 
 
@@ -27,14 +27,21 @@ useEffect(() => {
     return (
         <>
             <Header>Status a Department for a Budget</Header>
+                 <Grid centered padded relaxed>
             {projects.map(project =>
                  <div key={project.id}>
-                 <Card>
-                 <ProjectCard project_budget={project} />
-                 <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
-                 </Card>
+                 <Grid.Row style={{'padding': 5}}>
+
+                    <Grid.Column>
+                    <Card>
+                        <ProjectCard project_budget={project} />
+                        <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
+                     </Card>
+                    </Grid.Column>
+                 </Grid.Row>
                 </div>
             )}
+                 </Grid>
         </>
     )
 

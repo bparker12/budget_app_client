@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Modal, Confirm } from 'semantic-ui-react'
+import { Card, Modal, Confirm, Grid, Header } from 'semantic-ui-react'
 import ProjectDeptCard from '../project/projectDeptCard'
 import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
@@ -55,19 +55,29 @@ const DepartmentHour = props => {
 
     return (
     <>
+    <Header>All Projects and Departments</Header>
+    <Grid>
         {projectdepts.map(projectdept =>
-        <Card key={projectdept.id}>
-            <ProjectDeptCard
-                {...props}
-                projectDept={projectdept}
-                open={open}
-                setConfirm={setConfirm}
-                editModal={editModal}
-                getProjectDepts={getProjectDepts}
-                deleteConfirm={deleteConfirm}
-                />
-        </Card>
+        <div key={projectdept.id}>
+        <Grid.Row style={{'padding': 5}}>
+
+            <Grid.Column>
+                <Card>
+                    <ProjectDeptCard
+                        {...props}
+                        projectDept={projectdept}
+                        open={open}
+                        setConfirm={setConfirm}
+                        editModal={editModal}
+                        getProjectDepts={getProjectDepts}
+                        deleteConfirm={deleteConfirm}
+                        />
+                </Card>
+            </Grid.Column>
+        </Grid.Row>
+        </div>
         )}
+    </Grid>
         <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteProjectDept(id)}></Confirm>
         <Modal
             size="small"

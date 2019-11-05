@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Header, Card, Label, Button, Confirm, Modal } from 'semantic-ui-react'
+import { Header, Card, Label, Button, Confirm, Modal, Grid } from 'semantic-ui-react'
 import ProjectDeptCard from '../project/projectDeptCard'
 import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
@@ -54,8 +54,10 @@ const StatusDetails = props => {
     return (
       <>
           <Header> Status </Header>
+          <Grid>
           {projectDetails.map(projectDetail =>
           <div key={projectDetail.id}>
+          <Grid.Column>
           <Card>
               <ProjectDeptCard
               {...props}
@@ -66,9 +68,10 @@ const StatusDetails = props => {
               deleteConfirm={deleteConfirm}
               />
           </Card>
+          </Grid.Column>
           </div>
-          )
-          }
+          )}
+          </Grid>
           <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteProjectDept(id)}></Confirm>
         <Modal
             size="small"
