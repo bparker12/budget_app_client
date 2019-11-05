@@ -10,6 +10,7 @@ const ProjectDeptCard = props => {
             <br></br>
             {props.projectDept.project_budget.name}</Card.Header>
             <Card.Description textAlign="center"> Project Length: {props.projectDept.project_budget.length} </Card.Description>
+            <Card.Description textAlign="center"> Months Statused: {props.projectDept.project_length_remaining} </Card.Description>
                 <Card.Content>
                         <div>
                         <Card.Content >

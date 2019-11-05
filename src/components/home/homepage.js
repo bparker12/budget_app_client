@@ -26,7 +26,7 @@ useEffect(() => {
 
     return (
         <>
-            <Header>Status a Department for a Budget</Header>
+            <Header>Current Projects</Header>
                  <Grid centered padded relaxed>
             {projects.map(project =>
                  <div key={project.id}>

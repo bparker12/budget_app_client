@@ -53,7 +53,7 @@ const StatusDetails = props => {
 
     return (
       <>
-          <Header> Status </Header>
+          <Header> Project Status </Header>
           <Grid>
           {projectDetails.map(projectDetail =>
           <div key={projectDetail.id}>
