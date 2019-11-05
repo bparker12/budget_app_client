@@ -58,7 +58,7 @@ const StatusDetails = props => {
           {projectDetails.map(projectDetail =>
           <div key={projectDetail.id}>
           <Grid.Column>
-          <Card>
+          <Card fluid>
               <ProjectDeptCard
               {...props}
               projectDept={projectDetail}

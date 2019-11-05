@@ -33,7 +33,7 @@ useEffect(() => {
                  <Grid.Row style={{'padding': 5}}>
 
                     <Grid.Column>
-                    <Card>
+                    <Card >
                         <ProjectCard project_budget={project} />
                         <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
                      </Card>

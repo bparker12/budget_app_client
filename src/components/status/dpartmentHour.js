@@ -56,13 +56,13 @@ const DepartmentHour = props => {
     return (
     <>
     <Header>All Projects and Departments</Header>
-    <Grid>
+    <Grid centered padded relaxed>
         {projectdepts.map(projectdept =>
         <div key={projectdept.id}>
         <Grid.Row style={{'padding': 5}}>
 
-            <Grid.Column>
-                <Card>
+            <Grid.Column >
+                <Card fluid>
                     <ProjectDeptCard
                         {...props}
                         projectDept={projectdept}
