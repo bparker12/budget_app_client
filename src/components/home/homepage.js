@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Header, Card, Button } from 'semantic-ui-react'
+import { Header, Card, Button, Grid } from 'semantic-ui-react'
 import ProjectCard from '../project/projectCard'
 
 
-const DepartmentHour = props => {
+const HomePage = props => {
 
     const [projects, setProjects] = useState([])
 
@@ -26,17 +26,24 @@ useEffect(() => {
 
     return (
         <>
-            <Header>Status a Department for a Budget</Header>
+            <Header>Current Projects</Header>
+                 <Grid centered padded relaxed>
             {projects.map(project =>
                  <div key={project.id}>
-                 <Card>
-                 <ProjectCard project_budget={project} />
-                 <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
-                 </Card>
+                 <Grid.Row style={{'padding': 5}}>
+
+                    <Grid.Column>
+                    <Card >
+                        <ProjectCard project_budget={project} />
+                        <Button primary color="green" onClick={() => props.history.push(`/projectbudgets/${project.id}`)}>Status</Button>
+                     </Card>
+                    </Grid.Column>
+                 </Grid.Row>
                 </div>
             )}
+                 </Grid>
         </>
     )
 
 }
-export default DepartmentHour
+export default HomePage

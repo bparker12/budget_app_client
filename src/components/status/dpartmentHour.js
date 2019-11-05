@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Card, Modal, Confirm } from 'semantic-ui-react'
+import { Card, Modal, Confirm, Grid, Header } from 'semantic-ui-react'
 import ProjectDeptCard from '../project/projectDeptCard'
 import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
 
 
-const HomePage = props => {
+const DepartmentHour = props => {
     const [projectdepts, setProjectDept] = useState([])
     const [open, setConfirm] = useState(false)
     const [modalOpen, setModal] = useState(false)
@@ -55,18 +55,29 @@ const HomePage = props => {
 
     return (
     <>
+    <Header>All Projects and Departments</Header>
+    <Grid centered padded relaxed>
         {projectdepts.map(projectdept =>
-        <Card key={projectdept.id}>
-            <ProjectDeptCard
-                projectDept={projectdept}
-                open={open}
-                setConfirm={setConfirm}
-                editModal={editModal}
-                getProjectDepts={getProjectDepts}
-                deleteConfirm={deleteConfirm}
-                />
-        </Card>
+        <div key={projectdept.id}>
+        <Grid.Row style={{'padding': 5}}>
+
+            <Grid.Column >
+                <Card fluid>
+                    <ProjectDeptCard
+                        {...props}
+                        projectDept={projectdept}
+                        open={open}
+                        setConfirm={setConfirm}
+                        editModal={editModal}
+                        getProjectDepts={getProjectDepts}
+                        deleteConfirm={deleteConfirm}
+                        />
+                </Card>
+            </Grid.Column>
+        </Grid.Row>
+        </div>
         )}
+    </Grid>
         <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteProjectDept(id)}></Confirm>
         <Modal
             size="small"
@@ -75,6 +86,7 @@ const HomePage = props => {
             >
             <Modal.Content>
                 <ProjectBudgetEdit
+
                 projBudg={projId}
                 setModal={setModal}
                 modalOpen={modalOpen}
@@ -85,4 +97,4 @@ const HomePage = props => {
     </>
     )
 }
-export default HomePage
+export default DepartmentHour

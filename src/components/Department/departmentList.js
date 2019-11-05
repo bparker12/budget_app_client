@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from "react"
-import { Header, Card, Button, Confirm, Modal } from 'semantic-ui-react'
+import { Header, Card, Button, Confirm, Modal, Grid } from 'semantic-ui-react'
 import DepartmentCard from "./departmentCard"
 import DepartmentEdit from './departmentEdit'
 
@@ -52,19 +52,23 @@ const DepartmentList = props => {
 
     return (
         <>
-        <Header as="h1"> Departments </Header>
+        <Header as="h1"></Header>
+        <Grid centered padded>
             {deptartments.map(dept =>
-            <Card key={dept.id}>
+            <div key={dept.id}>
+            <Grid.Row style={{'padding': 5}}>
+
+            <Grid.Column>
+            <Card >
                 <DepartmentCard  dept={dept} />
-            <Button.Group widths='3'>
-                    <div>
-                    <Button onClick={() => handleDelete(dept.id)} color="vk">Delete</Button>
-                    </div>
-                    <div>
-                    <Button onClick={() => editModal(dept)} color="teal">Edit</Button>
-                    </div>
-                </Button.Group>
+                <Card.Content>
+                        <Button onClick={() => editModal(dept)} color="teal">Edit</Button>
+                        <Button onClick={() => handleDelete(dept.id)} color="vk">Delete</Button>
+                </Card.Content>
             </Card>
+            </Grid.Column>
+            </Grid.Row>
+            </div>
             )}
         <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteDept(currentId)} />
         <Modal
@@ -76,6 +80,7 @@ const DepartmentList = props => {
                 <DepartmentEdit dept={currentId} setModal={setModal} modalOpen={modalOpen} getDept={getDepartments}/>
             </Modal.Content>
         </Modal>
+        </Grid>
         </>
     )
 }

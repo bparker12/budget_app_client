@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Header, Card, Label, Button } from 'semantic-ui-react'
+import { Header, Card, Label, Button, Form } from 'semantic-ui-react'
 
 
 
@@ -77,20 +77,20 @@ const StatusProjectDept = props => {
         {projectDetails.map(projectDetail =>
           <Card key={projectDetail.id}>
             <Card.Header as='h3'  textAlign='center'> {projectDetail.department.name} </Card.Header>
-            <Card.Content>
-            <form>
+            <Form>
               <Card.Description textAlign="center">
                 Project Length:   {projectDetail.project_budget.length}
               </Card.Description>
               <Card.Description  textAlign="center">
                 Remaining Months: {projectDetail.project_length_remaining}
               </Card.Description>
-                <Label size="large" prompt basic>Total Hours Worked for Month # </Label>
+              <Card.Content>
+                <Label size="large" prompt basic>Total Hours Worked to Date </Label>
                 <input type="number" step={1} ref={total_hours} defaultValue={handleHoursWorked(projectDetail.department_hour)} min={handleHoursWorked(projectDetail.department_hour)}></input>
-                <Button type="button"
+                <Button type="button" color="blue"
                 onClick={(e) => addDeptHour(e, projectDetail.id, projectDetail.project_budget.id, projectDetail.department_hour)}>Submit</Button>
-            </form>
-            </Card.Content>
+              </Card.Content>
+            </Form>
           </Card>
         )}
 

@@ -38,7 +38,7 @@ const NavBar = props => {
                 }
                 {isAuthenticated() ?
                 <Menu.Item>
-                    <Link to="/status"> All Departments for Projects </Link>
+                    <Link to="/status"> Project/Department Breakdwon </Link>
                 </Menu.Item> : null
                 }
                 {isAuthenticated() === false ?
