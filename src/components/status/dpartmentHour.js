@@ -5,7 +5,7 @@ import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
 
 
-const HomePage = props => {
+const DepartmentHour = props => {
     const [projectdepts, setProjectDept] = useState([])
     const [open, setConfirm] = useState(false)
     const [modalOpen, setModal] = useState(false)
@@ -58,6 +58,7 @@ const HomePage = props => {
         {projectdepts.map(projectdept =>
         <Card key={projectdept.id}>
             <ProjectDeptCard
+                {...props}
                 projectDept={projectdept}
                 open={open}
                 setConfirm={setConfirm}
@@ -75,6 +76,7 @@ const HomePage = props => {
             >
             <Modal.Content>
                 <ProjectBudgetEdit
+
                 projBudg={projId}
                 setModal={setModal}
                 modalOpen={modalOpen}
@@ -85,4 +87,4 @@ const HomePage = props => {
     </>
     )
 }
-export default HomePage
+export default DepartmentHour

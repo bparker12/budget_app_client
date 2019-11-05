@@ -26,10 +26,11 @@ const ProjectDeptCard = props => {
                         <Card.Description> Esimated Contract Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.total_cost)}</Card.Description>
                     </div>
                 </Card.Content>
-                <Card.Content>
+                <Card.Content textAlign="center">
                     <Button color="vk" onClick={() => props.deleteConfirm(props.projectDept.id)}>Delete</Button>
                     <Button color="teal" onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>
                 </Card.Content>
+                <Button color="blue" type="button" onClick={() => props.history.push(`/departmentstatus/${props.projectDept.id}`)}>Status</Button>
         </>
     )
 }

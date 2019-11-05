@@ -3,7 +3,7 @@ import { Header, Card, Button } from 'semantic-ui-react'
 import ProjectCard from '../project/projectCard'
 
 
-const DepartmentHour = props => {
+const HomePage = props => {
 
     const [projects, setProjects] = useState([])
 
@@ -39,4 +39,4 @@ useEffect(() => {
     )
 
 }
-export default DepartmentHour
+export default HomePage

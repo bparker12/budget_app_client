@@ -1,11 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Header, Card, Label, Button } from 'semantic-ui-react'
+import { Header, Card, Label, Button, Confirm, Modal } from 'semantic-ui-react'
+import ProjectDeptCard from '../project/projectDeptCard'
+import ProjectBudgetEdit from '../project/projectBudgetEdit'
 
 
 
 const StatusDetails = props => {
 
     const [projectDetails, setProjectDetail] = useState([])
+    const [open, setConfirm] = useState(false)
+    const [modalOpen, setModal] = useState(false)
+    const [projId, setProj] = useState({})
+    const [id, setId] = useState()
+
+    const editModal = (proj) => {
+        setProj(proj)
+        setModal(!modalOpen)
+    }
+
+    const deleteConfirm = (id) => {
+        setId(id)
+        setConfirm(!open)
+    }
 
     const getProjectBudget =()=> {
         fetch(`http://localhost:8000/projectdepartments?project_budget=${+props.match.params.projectbudgetId}`, {
@@ -22,25 +38,53 @@ const StatusDetails = props => {
 
     useEffect(getProjectBudget, [])
 
+    const deleteProjectDept = (id) => {
+      fetch(`http://localhost:8000/projectdepartments/${id}`, {
+          method: "DELETE",
+          headers: {
+              Authorization: `Token ${localStorage.getItem("budgetapp_token")}`
+          }
+      })
+      .then(() => {
+          getProjectBudget()
+          setConfirm(!open)
+      })
+  }
+
     return (
       <>
           <Header> Status </Header>
           {projectDetails.map(projectDetail =>
           <div key={projectDetail.id}>
           <Card>
-            <Card.Header as='h3' textAlign='center'> {projectDetail.department.name} </Card.Header>
-            <Card.Content>
-              <Card.Description>
-                Months Remaining: {projectDetail.project_length_remaining}
-              </Card.Description>
-            </Card.Content>
-            <Card.Content>
-                <Button type="button" fluid onClick={() => props.history.push(`/departmentstatus/${projectDetail.id}`)}>Status Department</Button>
-            </Card.Content>
+              <ProjectDeptCard
+              {...props}
+              projectDept={projectDetail}
+              open={open}
+              setConfirm={setConfirm}
+              editModal={editModal}
+              deleteConfirm={deleteConfirm}
+              />
           </Card>
           </div>
           )
           }
+          <Confirm open={open} onCancel={() => setConfirm(!open)} onConfirm={() => deleteProjectDept(id)}></Confirm>
+        <Modal
+            size="small"
+            open={modalOpen}
+            onCancel={() => setModal(!open)}
+            >
+            <Modal.Content>
+                <ProjectBudgetEdit
+
+                projBudg={projId}
+                setModal={setModal}
+                modalOpen={modalOpen}
+                getProjectDepts={getProjectBudget}
+                />
+            </Modal.Content>
+        </Modal>
         </>
     )
 
