@@ -23,7 +23,6 @@ const ProjectDeptCard = props => {
                         </div>
                 </Card.Content>
                 <Card.Content>
-                    <div>
                     <Table celled collapsing>
                         <Table.Header>
                             <Table.Row>
@@ -51,8 +50,9 @@ const ProjectDeptCard = props => {
                             <Table.Row>
                                 <Table.Cell>Project</Table.Cell>
                                 <Table.Cell>${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.total_cost)}</Table.Cell>
-                                <Table.Cell></Table.Cell>
-                                <Table.Cell></Table.Cell>
+                                <Table.Cell>${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.actual_project_cost)}</Table.Cell>
+                                <Table.Cell>${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.project_diff)}</Table.Cell>
+
                             </Table.Row>
                         </Table.Body>
 
@@ -60,7 +60,8 @@ const ProjectDeptCard = props => {
                         <Card.Description> Esimated Monthly Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.monthly_cost)}</Card.Description>
                         <Card.Description> Esimated Project Cost: ${new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(props.projectDept.total_cost)}</Card.Description> */}
                     </Table>
-                    </div>
+
+                    <Card.Description>* The Actual Project Cost is projected <br></br>based on the monthly spend average to date</Card.Description>
                 </Card.Content>
                 <Card.Content textAlign="center">
                     <Button color="teal" onClick={() => props.editModal(props.projectDept.project_budget)}>Edit</Button>

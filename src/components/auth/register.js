@@ -22,13 +22,13 @@ const Register = props => {
             "company": company.current.value,
             "password": password.current.value
         }
-        password === verifyPassword ?
+        // password == verifyPassword ?
         register(newUser).then(() => {
             props.history.push({
                 pathname: "/"
             })
         })
-        : alert("Password did not match")
+        // : alert("Password did not match")
     }
 
     return (
@@ -75,14 +75,14 @@ const Register = props => {
                         placeholder="Password"
                         required />
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password"
                         name="verifyPassword"
                         className="form-control"
                         placeholder="Verify password"
                         required />
-                </fieldset>
+                </fieldset> */}
                 <fieldset>
                     <button type="submit">
                         Sign in
