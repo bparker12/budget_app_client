@@ -1,6 +1,7 @@
 import React, { useRef } from "react"
 import { withRouter } from "react-router-dom"
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
+import { Form, Grid, Button } from 'semantic-ui-react'
 
 
 const Register = props => {
@@ -33,62 +34,66 @@ const Register = props => {
 
     return (
         <main style={{ textAlign: "center" }}>
-            <form className="form--login" onSubmit={handleRegister}>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+            <Grid.Column style={{ "maxWidth": 450, 'border': "4 solid black" }}>
+            <Form className="form--login" onSubmit={handleRegister} style={{ border: 1 }}>
                 <h1 className="h3 mb-3 font-weight-normal">Register to use Bangazon</h1>
-                <fieldset>
+                <Form.Field>
                     <label htmlFor="userName"> Username </label>
                     <input ref={userName} type="text"
                         name="userName"
                         className="form-control"
                         placeholder="Username"
                         required autoFocus />
-                </fieldset>
-                <fieldset>
+                </Form.Field>
+                <Form.Field>
                     <label htmlFor="firstName"> First Name </label>
                     <input ref={firstName} type="text"
                         name="firstName"
                         className="form-control"
                         placeholder="First name"
                         required autoFocus />
-                </fieldset>
-                <fieldset>
+                </Form.Field>
+                <Form.Field>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text"
                         name="lastName"
                         className="form-control"
                         placeholder="Last name"
                         required />
-                </fieldset>
-                <fieldset>
+                </Form.Field>
+                <Form.Field>
                     <label htmlFor="inputEmail"> Company Name </label>
                     <input ref={company} type="text"
                         name="company"
                         className="form-control"
                         placeholder="Company Name"
                         required />
-                </fieldset>
-                <fieldset>
+                </Form.Field>
+                <Form.Field>
                     <label htmlFor="inputPassword"> Password </label>
                     <input ref={password} type="password"
                         name="password"
                         className="form-control"
                         placeholder="Password"
                         required />
-                </fieldset>
-                {/* <fieldset>
+                </Form.Field>
+                {/* <Form.Field>
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password"
                         name="verifyPassword"
                         className="form-control"
                         placeholder="Verify password"
                         required />
-                </fieldset> */}
-                <fieldset>
-                    <button type="submit">
+                </Form.Field> */}
+                <Form.Field>
+                    <Button type="submit">
                         Sign in
-                    </button>
-                </fieldset>
-            </form>
+                    </Button>
+                </Form.Field>
+            </Form>
+            </Grid.Column>
+            </Grid>
         </main>
     )
 }
