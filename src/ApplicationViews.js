@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom"
 import HomePage from './components/home/homepage'
 import Register from './components/auth/register'
 import Login from './components/auth/login'
-import DepartmentForm from './components/department/departmentForm'
-import DepartmentList from './components/department/departmentList'
+import DepartmentForm from './components/Department/departmentForm'
+import DepartmentList from './components/Department/departmentList'
 import ProjectBudgetForm from './components/project/projectBudgetForm'
 import DepartmentHour from './components/status/dpartmentHour'
 import StatusDetails from "./components/status/statusDetails"
