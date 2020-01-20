@@ -25,11 +25,12 @@ useEffect(() => {
 
 
     return (
+        
         <>
         <Header textAlign="center" as='h1'> Budget Breakdown</Header>
             <Header textAlign="center">Current Projects</Header>
                  <Grid centered padded relaxed>
-            {projects.map(project =>
+                {projects.map(project =>
                  <div key={project.id}>
                  <Grid.Row style={{'padding': 5}}>
 

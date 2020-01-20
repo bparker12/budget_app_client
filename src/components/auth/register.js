@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
 import { withRouter } from "react-router-dom"
 import useSimpleAuth from '../../hooks/ui/useSimpleAuth'
-import { Form, Grid, Button } from 'semantic-ui-react'
-
+import { Form, Grid, Button, Segment } from 'semantic-ui-react'
+import './auth.css'
 
 const Register = props => {
     const userName = useRef()
@@ -33,11 +33,15 @@ const Register = props => {
         : alert("Password did not match")
     }
 
+    const border ={
+        border: '5px solid black'
+    }
+
     return (
-        <main style={{ textAlign: "center" }}>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-            <Grid.Column style={{ "maxWidth": 450, 'border': "4 solid black" }}>
-            <Form className="form--login" onSubmit={handleRegister} style={{ border: 1 }}>
+            <Grid.Column style={{ "maxWidth": 450}} >
+            <Form onSubmit={handleRegister} className="auth     ">
+            <Segment stacked>
                 <h1 className="h3 mb-3 font-weight-normal">Register to use Bangazon</h1>
                 <Form.Field>
                     <label htmlFor="userName"> Username </label>
@@ -92,10 +96,10 @@ const Register = props => {
                         Sign in
                     </Button>
                 </Form.Field>
+                </Segment>
             </Form>
             </Grid.Column>
             </Grid>
-        </main>
     )
 }
 export default withRouter(Register)

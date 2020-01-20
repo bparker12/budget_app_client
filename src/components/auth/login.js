@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-import { Form, Label, Grid, Button } from 'semantic-ui-react'
+import { Form, Label, Grid, Button, Segment } from 'semantic-ui-react'
 
 
 const Login = props => {
@@ -31,10 +31,10 @@ const Login = props => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                <Grid.Column style={{ maxWidth: 450 }}>
+                <Grid.Column style={{ maxWidth: 450 }} >
                     <Form size="Large" onSubmit={handleLogin}>
+                    <Segment stacked>
                         <h1 className="h3 mb-3 font-weight-normal">Please sign into Budget Breakdown</h1>
                         <Form.Field>
                             <Label size='huge' htmlFor="username"> Username </Label>
@@ -60,10 +60,10 @@ const Login = props => {
                     </Button>
                         </Form.Field>
                         <p>Not Registered? <Link to="/register"> Register Here</Link></p>
+                        </Segment>
                     </Form>
                 </Grid.Column>
             </Grid>
-        </main>
     )
 }
 export default Login
